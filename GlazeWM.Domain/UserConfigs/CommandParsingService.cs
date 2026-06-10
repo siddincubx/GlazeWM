@@ -221,6 +221,9 @@ namespace GlazeWM.Domain.UserConfigs
         "maximized" => subjectContainer is Window
           ? new SetMaximizedCommand(subjectContainer as Window)
           : new NoopCommand(),
+        "fullscreen" => subjectContainer is Window
+          ? new SetFullscreenCommand(subjectContainer as Window)
+          : new NoopCommand(),
         "tiling" => subjectContainer is Window
           ? new SetTilingCommand(subjectContainer as Window)
           : new NoopCommand(),
@@ -243,6 +246,9 @@ namespace GlazeWM.Domain.UserConfigs
           : new NoopCommand(),
         "maximized" => subjectContainer is Window
           ? new ToggleMaximizedCommand(subjectContainer as Window)
+          : new NoopCommand(),
+        "fullscreen" => subjectContainer is Window
+          ? new ToggleFullscreenCommand(subjectContainer as Window)
           : new NoopCommand(),
         // TODO: "toggle focus mode" command is deprecated. Remove in next major release.
         "focus" => commandParts[2] switch

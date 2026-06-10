@@ -90,6 +90,20 @@ namespace GlazeWM.Domain.Containers.CommandHandlers
         return;
       }
 
+      if (window is FullscreenWindow)
+      {
+        SetWindowPos(
+          window.Handle,
+          new IntPtr((int)ZOrderFlags.TopMost),
+          window.X,
+          window.Y,
+          window.Width,
+          window.Height,
+          defaultFlags
+        );
+        return;
+      }
+
       // Get z-order to set for floating windows.
       var shouldShowOnTop = _userConfigService.GeneralConfig.ShowFloatingOnTop;
       var floatingZOrder = shouldShowOnTop
