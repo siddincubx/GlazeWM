@@ -10,7 +10,7 @@ namespace GlazeWM.Domain.Windows
 {
   public sealed class FullscreenWindow : Window
   {
-    public WindowType PreviousState;
+    public readonly WindowType PreviousState;
 
     private readonly UserConfigService _userConfigService =
       ServiceLocator.GetRequiredService<UserConfigService>();
